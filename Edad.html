@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora de Edad</title>
+<style>
+body { font-family: Arial; text-align: center; margin-top: 50px; }
+input, button { padding: 10px; margin: 10px; }
+.resultado { font-size: 20px; font-weight: bold; margin-top: 15px; }
+</style>
+</head>
+<body>
+
+<h1>Calculadora de Edad</h1>
+
+<input type="date" id="fecha">
+
+<br>
+
+<button onclick="calcularEdad()">Calcular Edad</button>
+
+<div class="resultado" id="resultado"></div>
+
+<br><br>
+
+<button onclick="window.location.href='index.html'">
+Volver a calculadora
+</button>
+
+<script>
+function calcularEdad() {
+let fecha = document.getElementById("fecha").value;
+
+if (fecha === "") {
+document.getElementById("resultado").innerText = "Ingresa una fecha";
+return;
+}
+
+let hoy = new Date();
+let nacimiento = new Date(fecha);
+
+let edad = hoy.getFullYear() - nacimiento.getFullYear();
+let m = hoy.getMonth() - nacimiento.getMonth();
+
+if (m < 0 || (m === 0 && hoy.getDate() < nacimiento.getDate())) {
+edad--;
+}
+
+document.getElementById("resultado").innerText =
+"Tu edad es: " + edad + " años";
+}
+</script>
+
+</body>
+</html>

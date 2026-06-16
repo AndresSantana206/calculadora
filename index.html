@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora Básica</title>
+<style>
+body { font-family: Arial; text-align: center; margin-top: 30px; }
+input { margin: 5px; padding: 5px; }
+button { margin: 5px; padding: 10px; cursor: pointer; }
+.resultado { margin-top: 15px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Calculadora Básica</h1>
+
+<input type="number" id="num1" placeholder="Número 1">
+<input type="number" id="num2" placeholder="Número 2">
+
+<br>
+
+<button onclick="sumar()">Suma</button>
+<button onclick="restar()">Resta</button>
+<button onclick="multiplicar()">Multiplicación</button>
+<button onclick="dividir()">División</button>
+<button onclick="potencia()">Potencia</button>
+<button onclick="factorial()">Factorial (N1)</button>
+
+<div class="resultado" id="resultado"></div>
+
+<br><br>
+
+<!-- Botón para ir a la otra página -->
+<button onclick="window.location.href='edad.html'">
+Ir a calculadora de edad
+</button>
+
+<script>
+function obtenerValores() {
+let n1 = parseFloat(document.getElementById("num1").value);
+let n2 = parseFloat(document.getElementById("num2").value);
+return [n1, n2];
+}
+
+function sumar() {
+let [a,b] = obtenerValores();
+document.getElementById("resultado").innerText = a + b;
+}
+
+function restar() {
+let [a,b] = obtenerValores();
+document.getElementById("resultado").innerText = a - b;
+}
+
+function multiplicar() {
+let [a,b] = obtenerValores();
+document.getElementById("resultado").innerText = a * b;
+}
+
+function dividir() {
+let [a,b] = obtenerValores();
+document.getElementById("resultado").innerText = b !== 0 ? a / b : "Error";
+}
+
+function potencia() {
+let [a,b] = obtenerValores();
+document.getElementById("resultado").innerText = Math.pow(a, b);
+}
+
+function factorial() {
+let n = parseInt(document.getElementById("num1").value);
+let f = 1;
+for (let i = 1; i <= n; i++) {
+f *= i;
+}
+document.getElementById("resultado").innerText = f;
+}
+</script>
+
+</body>
+</html>
